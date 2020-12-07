@@ -6,32 +6,40 @@ import time
 import sys
 
 def create_topic(SERVER, TOPIC_name):
+    # port number in docker-compose.yml
     port_list = ["9091", "9092", "9093"]
     bootstrap_servers = [SERVERIP + ":" + port for port in port_list]
     admin_client = KafkaAdminClient(bootstrap_servers=bootstrap_servers, 
                                     client_id='test')
     topic_list = []
+    # partition number, replica number checking!!
     topic_list.append(NewTopic(name=TOPIC_name, num_partitions=3, replication_factor=3))
     admin_client.create_topics(new_topics=topic_list, validate_only=False)
 
-def send_mag(url, SERVERIP, topic_name):
+def send_mag(url, SERVERIP, TOPIC_name):
     # bootstrap_servers = ['localhost:9091', 'localhost:9092', 'localhost:9093']
     port_list = ["9091", "9092", "9093"]
     bootstrap_servers = [SERVERIP + ":" + port for port in port_list]
-    topicName = topic_name
+    topicName = TOPIC_name
     producer = KafkaProducer(bootstrap_servers = bootstrap_servers,
                             value_serializer=lambda v: json.dumps(v).encode('utf-8'))
     while True:
         try:
             response = requests.get(json_url)
             if response.status_code == 200:
+                # msg send to broker
                 producer.send(topicName, response.json())
                 producer.flush()
-                print("ok! ", end=" ")
+
+                # console print        
+                sys.stdout.write("ok!!! ")  # same as print
+                sys.stdout.flush()
+                
                 time.sleep(60)
 
         except Exception as e:
-            print(e)
+            sys.stdout.write(e)  # same as print
+            sys.stdout.flush()
             time.sleep(30)
 
 
