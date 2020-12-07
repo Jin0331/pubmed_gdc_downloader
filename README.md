@@ -8,3 +8,6 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 * **1. pip3 install kafka-python**
 * **2. docker-compose up -d ---> back-ground run**
 * **3. msg.encode("utf-8") ---> all mesages must be encoded**
+
+ - - -
+ https://stackoverflow.com/questions/51799077/kafka-python-consumer-start-reading-from-offset-automatically
