@@ -2,41 +2,29 @@ from kafka import KafkaProducer
 import requests
 import json
 import time
+import sys
 
+def topic_producer(url, SERVERIP, topic_name):
+    # bootstrap_servers = ['localhost:9091', 'localhost:9092', 'localhost:9093']
+    port_list = ["9091", "9092", "9093"]
+    bootstrap_servers = [SERVERIP + ":" + port for port in port_list]
+    topicName = topic_name
+    producer = KafkaProducer(bootstrap_servers = bootstrap_servers,
+                            value_serializer=lambda v: json.dumps(v).encode('utf-8'))
 
-json_url = "http://openapi.seoul.go.kr:8088/4e4258575a73656d32315a46644370/json/bikeList/1/1000"
+    while True:
+        try:
+            response = requests.get(json_url)
+            if response.status_code == 200:
+                producer.send(topicName, response.json())
+                producer.flush()
+                print("ok! ", end=" ")
+                time.sleep(60)
 
-# bootstrap_servers = ['localhost:9091', 'localhost:9092', 'localhost:9093']
-bootstrap_servers = ['210.115.229.96:9091', '210.115.229.96:9092', '210.115.229.96:9093']
-topicName = "seoul_bike_1_10"
-producer = KafkaProducer(bootstrap_servers = bootstrap_servers,
-                         value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        except Exception as e:
+            print(e)
+            time.sleep(30)
 
-
-while True:
-    try:
-        response = requests.get(json_url)
-        if response.status_code == 200:
-            print("ok! ", end=" ")
-            producer.send(topicName, response.json())
-            producer.flush()
-            time.sleep(10)
-
-    except Exception as e:
-        print(e)
-        time.sleep(30)          
-
-# # for json
-# # value_serializer= lambda v: v.encode('utf-8')
-# # producer.send(topicName, msg.encode("utf-8"))
-# bootstrap_servers = ['localhost:9091', 'localhost:9092', 'localhost:9093']
-# topicName = 'test2'
-# producer = KafkaProducer(bootstrap_servers = bootstrap_servers,
-#                          value_serializer=lambda v: json.dumps(v).encode('utf-8'))
-
-# for index in range(1000):
-#     future = producer.send(topicName, {index : "hi"})
-
-# result = future.get(timeout=120)
-
-# producer.flush()
+if __name__ == "__main__":
+    json_url = "http://openapi.seoul.go.kr:8088/4e4258575a73656d32315a46644370/json/bikeList/1/100"
+    topic_producer(json_url, sys.argv[1], "seoul_bike_1_100")
