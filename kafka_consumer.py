@@ -3,7 +3,6 @@ import sys
 
 def consumer_test(SERVERIP, topic_name, GROUPID):
 
-    # bootstrap_servers = ['localhost:9091', 'localhost:9092', 'localhost:9093']
     port_list = ["9091", "9092", "9093"]
     bootstrap_servers = [SERVERIP + ":" + port for port in port_list]
 
@@ -14,4 +13,10 @@ def consumer_test(SERVERIP, topic_name, GROUPID):
         print (message)
 
 if __name__ == "__main__":
-    consumer_test(sys.argv[1], "seoul_bike_1_100", "consumer_test")
+
+    # python3 kafka_consumer.py SERVERIP TOPIC_NAME CONSUMER_ID
+    SERVERIP = sys.argv[1]
+    TOPIC_NAME = sys.argv[2]
+    CONSUMER_ID = sys.argv[3]
+
+    consumer_test(sys.argv[1], TOPIC_NAME, CONSUMER_ID)

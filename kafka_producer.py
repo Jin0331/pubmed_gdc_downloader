@@ -17,12 +17,11 @@ def create_topic(SERVER, TOPIC_name):
     admin_client.create_topics(new_topics=topic_list, validate_only=False)
 
 def send_mag(url, SERVERIP, TOPIC_name):
-    # bootstrap_servers = ['localhost:9091', 'localhost:9092', 'localhost:9093']
     port_list = ["9091", "9092", "9093"]
     bootstrap_servers = [SERVERIP + ":" + port for port in port_list]
     topicName = TOPIC_name
     producer = KafkaProducer(bootstrap_servers = bootstrap_servers,
-                            value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+                            value_serializer=lambda v: json.dumps(v).encode('euc-kr'))
     while True:
         try:
             response = requests.get(json_url)
@@ -35,20 +34,22 @@ def send_mag(url, SERVERIP, TOPIC_name):
                 sys.stdout.write("ok!!! ")  # same as print
                 sys.stdout.flush()
                 
-                time.sleep(60)
+                time.sleep(30)
 
         except Exception as e:
-            sys.stdout.write(e)  # same as print
-            sys.stdout.flush()
+            print(e)
             time.sleep(30)
 
 
 if __name__ == "__main__":
+    
+    # python3 kafka_producer.py SERVERIP TOPIC_NAME API
     SERVERIP = sys.argv[1]
-    json_url = "http://openapi.seoul.go.kr:8088/4e4258575a73656d32315a46644370/json/bikeList/1/100"
+    TOPICNAME = sys.argv[2]
+    API = sys.argv[3]
 
     # create topic
-    create_topic(SERVERIP, "seoul_bike_1_100")
+    create_topic(SERVERIP, TOPICNAME)
 
     # send message
-    send_mag(json_url, SERVERIP, "seoul_bike_1_100")
+    send_mag(API, SERVERIP, TOPICNAME)
