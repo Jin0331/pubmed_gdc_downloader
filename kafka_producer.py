@@ -24,7 +24,7 @@ def send_mag(url, SERVERIP, TOPIC_name):
                             value_serializer=lambda v: json.dumps(v).encode('euc-kr'))
     while True:
         try:
-            response = requests.get(json_url)
+            response = requests.get(url)
             if response.status_code == 200:
                 # msg send to broker
                 producer.send(topicName, response.json())
