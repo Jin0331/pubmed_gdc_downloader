@@ -1,5 +1,23 @@
 version: '3'
-services:
+services:  
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 9917:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: sempre813!
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 9918:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: sempre813!
+
   zookeeper:
     image: zookeeper:3.4.9
     hostname: zookeeper
