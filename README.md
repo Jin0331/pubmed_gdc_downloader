@@ -21,6 +21,16 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 
  - - -
 
+## **MongoDB**
+
+
+## **All-spark-notebook
+
+1. passwd
+
+2. nano /etc/ssh/sshd_config
+
+
 ## **Error reference**
 
  * https://stackoverflow.com/questions/51799077/kafka-python-consumer-start-reading-from-offset-automatically

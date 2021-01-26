@@ -1,5 +1,5 @@
 import pymongo
-print(pymongo.__version__) # 3.10.1
+print(pymongo.__version__) # 4.4.3
 
 conn = pymongo.MongoClient(host='210.115.229.80', port=9917, \
                            username='root',
@@ -22,3 +22,5 @@ for result in results:
 results = collection.find({"age": {"$gte": 60}})
 for result in results:
     print(result)
+
+    
