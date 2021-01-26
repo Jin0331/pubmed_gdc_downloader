@@ -24,11 +24,13 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 ## **MongoDB**
 
 
-## **All-spark-notebook
+## **All-spark-notebook**
 
-1. passwd
+1. **passwd**
 
-2. nano /etc/ssh/sshd_config
+2. **nano /etc/ssh/sshd_config**
+
+    `PermitRootLogin yes`
 
 
 ## **Error reference**
