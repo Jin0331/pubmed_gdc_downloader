@@ -28,9 +28,13 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 
 1. **passwd**
 
-2. **nano /etc/ssh/sshd_config**
+    `root, jovyan`
 
-    `PermitRootLogin yes`
+2. **openssh-server**
+
+    `echo "PermitRootLogin yes" >> /etc/ssh/sshd_config`
+
+    `service ssh start`
 
 
 ## **Error reference**
