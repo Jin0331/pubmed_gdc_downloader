@@ -4,27 +4,23 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 
 - - -
 
-## **StandAlone**
+## **docker-compose.yml**
+
 * **docker-compose 활용**
+
     1. `SERVERIP=some-value docker-compose up -d ---> back-ground run`
 
-* **kafka-python**
-    `pip3 install kafka-python`
-    1. **Producer**
-
-        `python3 kafka_producer.py SERVERIP TOPIC_NAME API`
-
-    2. **Consumer**
-
-        `python3 kafka_consumer.py SERVERIP TOPIC_NAME CONSUMER_ID`
-
+    2. `Zookeeper 3.4.9, Kafka cp-kafka:5.3.0, 3 server`
 
  - - -
 
 ## **MongoDB**
 
+    `MongoDB 4.4.3 Mongo-Express`
 
 ## **All-spark-notebook**
+
+    `Python 3.8.3, R 4.0.3`
 
 1. **passwd**
 
@@ -32,10 +28,31 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 
 2. **openssh-server**
 
+    `apt-get update && apt-get install openssh-server ufw`
+
     `echo "PermitRootLogin yes" >> /etc/ssh/sshd_config`
 
     `service ssh start`
 
+3. **Python modules**
+
+    `pip3 install --upgrade pip`
+
+    A. **kafka-python**
+
+        `pip3 install kafka-python`
+
+        1. Producer
+
+            `python3 kafka_producer.py SERVERIP TOPIC_NAME API`
+
+        2. Consumer
+
+            `python3 kafka_consumer.py SERVERIP TOPIC_NAME CONSUMER_ID`
+
+    B. **pymongo**
+
+        `pip3 install "pymongo==3.8.0"  gridfs automatically install` 
 
 ## **Error reference**
 

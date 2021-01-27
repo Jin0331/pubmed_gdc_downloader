@@ -14,6 +14,7 @@ services:
       - JUPYTER_ENABLE_LAB=yes
     volumes:
       - ./py:/home/jovyan/work/py
+      - ./spark_data:/home/jovyan/work/data
   mongo:
     image: mongo
     restart: always
@@ -22,12 +23,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: sempre813!
-
+    volumes:
+      - ./mongo_data:/data/db
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - "9918:8081"
+      - "8081:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: sempre813!
@@ -42,8 +44,8 @@ services:
       ZOO_PORT: 2181
       ZOO_SERVERS: server.1=zookeeper:2888:3888
     volumes:
-      - ./data/zookeeper/data:/data
-      - ./data/zookeeper/datalog:/datalog
+      - ./kafka_data/zookeeper/data:/data
+      - ./kafka_data/zookeeper/datalog:/datalog
    
   kafka1:
     image: confluentinc/cp-kafka:5.3.0
@@ -58,7 +60,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
-      - ./data/kafka1/data:/var/lib/kafka/data
+      - ./kafka_data/kafka1/data:/var/lib/kafka/data
     depends_on:
       - zookeeper
       
@@ -74,7 +76,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_BROKER_ID: 2
     volumes:
-      - ./data/kafka2/data:/var/lib/kafka/data
+      - ./kafka_data/kafka2/data:/var/lib/kafka/data
     depends_on:
       - zookeeper 
   kafka3:
@@ -90,7 +92,7 @@ services:
       KAFKA_BROKER_ID: 3
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
-      - ./data/kafka3/data:/var/lib/kafka/data
+      - ./kafka_data/kafka3/data:/var/lib/kafka/data
     depends_on:
       - zookeeper
       
