@@ -22,17 +22,23 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 
     `Python 3.8.3, R 4.0.3`
 
+    `apt-get update && apt-get upgrade `
+
 1. **passwd**
 
     `root, jovyan`
 
 2. **openssh-server**
 
-    `apt-get update && apt-get install openssh-server ufw`
+    `apt-get install openssh-server ufw`
 
     `echo "PermitRootLogin yes" >> /etc/ssh/sshd_config`
 
     `service ssh start`
+
+3. **vccode**
+
+    `Python interpreter install & Python Extension pack(debug console)`
 
 3. **Python modules**
 
@@ -52,7 +58,7 @@ https://medium.com/better-programming/a-simple-apache-kafka-cluster-with-docker-
 
     B. **pymongo**
 
-        `pip3 install "pymongo==3.8.0"  gridfs automatically install` 
+        `pip3 install "pymongo==3.11.2"  gridfs automatically install` 
 
 ## **Error reference**
 
