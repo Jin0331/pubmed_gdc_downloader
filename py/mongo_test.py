@@ -1,9 +1,12 @@
 import pymongo
 print(pymongo.__version__) # 4.4.3
 
-conn = pymongo.MongoClient(host='210.115.229.80', port=9917, \
+host = input("Enter Host IP :")
+passwd = input("Enter PASSWORD :")
+
+conn = pymongo.MongoClient(host= host, port = 9917, \
                            username='root',
-                           password='sempre813!',)
+                           password=passwd,)
 
 str_database_name = 'test_db'
 db = conn.get_database(str_database_name)

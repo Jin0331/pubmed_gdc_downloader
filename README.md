@@ -4,7 +4,7 @@
 
 * **docker-compose 활용**
 
-    1. `SERVERIP=some-value docker-compose up -d ---> back-ground run`
+    1. `SERVERIP=your-ip docker-compose up -d`
 
     2. `Zookeeper 3.4.9, Kafka cp-kafka:5.3.0, 3 server`
 
@@ -22,7 +22,7 @@
 
 ## **All-spark-notebook**
 
-    Python 3.8.3, R 4.0.3
+    Spark 3.0.1, Python 3.8.3, R 4.0.3, Jupyter Lab, VScode
 
     apt-get update && apt-get upgrade
 
