@@ -64,6 +64,23 @@
 
         pip3 install "pymongo==3.11.2"  gridfs automatically install
 
+    C. **Pubmed-Bach-Download**
+
+        pip3 install requests requests3 beautifulsoup4 lxml
+
+        git clone https://github.com/Jin0331/Pubmed-Batch-Download.git
+
+        usage: fetch_pdfs.py [-h] [-pmids PMIDS] [-pmf PMF] [-out OUT] [-errors ERRORS] [-maxRetries MAXRETRIES]
+
+        Flag Arguments:
+        -h, --help            show this help message and exit
+        -pmids PMIDS          Comma separated list of pmids to fetch. Must include -pmids or -pmf.
+        -pmf PMF              File with pmids to fetch inside, one pmid per line. Optionally, the file can be a tsv with a second column of names to save each pmid's article with (without '.pdf' at the end). Must include -pmids or -pmf
+        -out OUT              Output directory for fetched articles. Default: fetched_pdfs
+        -errors ERRORS        Output file path for pmids which failed to fetch. Default: unfetched_pmids.tsv
+        -maxRetries MAXRETRIES
+                                Change max number of retries per article on an error 104. Default: 3
+
 <br>
 
 - - -

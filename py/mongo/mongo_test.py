@@ -6,7 +6,7 @@ passwd = input("Enter PASSWORD :")
 
 conn = pymongo.MongoClient(host= host, port = 9917, \
                            username='root',
-                           password=passwd,)
+                           password=passwd)
 
 str_database_name = 'test_db'
 db = conn.get_database(str_database_name)
