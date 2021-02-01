@@ -3,9 +3,14 @@ import base64
 import gridfs
 import os
 
-def write_new_pdf(host, port, user, passwd, path):
-    client = MongoClient(host = host, port = port, username = user, password = passwd)   
-    db = client["test_db"]
+def write_new_pdf(dbname):
+    host = input("Enter HOST IP : ")
+    user = input("Enter USER : ")
+    passwd = input("Enter PASSWD : ")
+    pdf_path = input("Enter PDF path : ")
+
+    client = MongoClient(host = host, port = 9917, username = user, password = passwd)   
+    db = client[dbname]
     fs = gridfs.GridFS(db)
     
     # Note, open with the "rb" flag for "read bytes"
@@ -16,10 +21,14 @@ def write_new_pdf(host, port, user, passwd, path):
         filename=path) as fp:
         fp.write(encoded_string)
         
-def read_pdf(host, port, user, passwd, filename):
+def read_pdf(dbname, filename):
+    host = input("Enter HOST IP : ")
+    user = input("Enter USER : ")
+    passwd = input("Enter PASSWD : ")
+
     # Usual setup
-    client = MongoClient(host = host, port = port, username = user, password = passwd)   
-    db = client["test_db"]
+    client = MongoClient(host = host, port = 9917, username = user, password = passwd)   
+    db = client[dbname]
     fs = gridfs.GridFS(db)
     # Standard query to Mongo
     data = fs.find_one(filter=dict(filename=filename))
@@ -32,15 +41,8 @@ if __name__ == "__main__":
     # working dir
     print(os.getcwd())
 
-    host = input("Enter HOST IP : ")
-    port = int(input("Enter PORT : "))
-    user = input("Enter USER : ")
-    passwd = input("Enter PASSWD : ")
-    pdf_path = input("Enter PDF path : ")
-
-
     # Store PDF to Mongo
-    write_new_pdf(host=host, port = port, user= user, passwd= passwd, path=pdf_path)
+    write_new_pdf()
     
     
     # Read PDF from mongo

@@ -45,10 +45,12 @@ def getPmidList(strQuery):
     strUrl = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term={0}&retmax={1}&retmode=json'.format(strQuery, retmax)
 
     ## Get HTML Data
-    pmidList = getWebData(strUrl)
-    
+    pmidList = getWebData(strUrl)    
     pmidList = json.loads(pmidList)
-
     pmidList = list(map(int, pmidList['esearchresult']['idlist']))
 
     return pmidList
+
+
+if __name__ == "__main__":
+    print(getPmidList("PRKN"))
