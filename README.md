@@ -1,4 +1,4 @@
-# **Pubmed paper(PDF) to MongoDB**
+# **pubmed_gdc_downloader**
 
 ## **docker-compose.yml**
 
