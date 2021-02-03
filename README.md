@@ -62,7 +62,7 @@
 
     B. **pymongo**
 
-        pip3 install "pymongo==3.11.2"  gridfs automatically install
+        pip3 install "pymongo==3.11.2" (gridfs automatically install)
     
     C. **biopython**
 
@@ -91,11 +91,13 @@
 
     ``conda activate gdc_client``
 
-    ``git clonehttps://github.com/NCI-GDC/gdc-client.git``
+    ``git clone https://github.com/NCI-GDC/gdc-client.git``
 
         pip install -r requirements.txt
         python setup.py install
         pip install -r dev-requirements.txt
+
+        python -m pytest tests/
 
 
 <br>
