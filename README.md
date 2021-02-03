@@ -42,7 +42,7 @@
 
 3. **vccode**
 
-    `Python interpreter install & Python Extension pack(debug console)`
+    `Python Extension Pack`
 
 4. **Python** - ***conda env base***
 
