@@ -42,7 +42,7 @@
 
 3. **vccode**
 
-    `Python Extension Pack`
+    `Pulgin:Python Extension Pack`
 
 4. **Python** - ***conda env base***
 
@@ -63,6 +63,10 @@
     B. **pymongo**
 
         pip3 install "pymongo==3.11.2"  gridfs automatically install
+    
+    C. **biopython**
+
+        pip3 install biopython
 
     C. **Pubmed-Bach-Download**
 
