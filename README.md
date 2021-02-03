@@ -24,7 +24,7 @@
 
     Spark 3.0.1, Python 3.8.3, R 4.0.3, Jupyter Lab, VScode
 
-    apt-get update && apt-get upgrade
+    apt-get update && apt-get upgrade -y
 
 1. **passwd**
 
@@ -34,7 +34,7 @@
 
 2. **openssh-server**
 
-    ``apt-get install openssh-server``
+    ``apt-get install openssh-server -y``
 
     ``echo "PermitRootLogin yes" >> /etc/ssh/sshd_config``
 
