@@ -44,7 +44,7 @@
 
     `Python interpreter install & Python Extension pack(debug console)`
 
-3. **Python modules**
+4. **Python** - ***conda env base***
 
     ``pip3 install --upgrade pip``
 
@@ -81,6 +81,19 @@
         -maxRetries MAXRETRIES
                                 Change max number of retries per article on an error 104. Default: 3
 
+4. **Python** - ***conda env gdc_client***
+
+    ``conda create -n gdc_client python=3.7``
+
+    ``conda activate gdc_client``
+
+    ``git clonehttps://github.com/NCI-GDC/gdc-client.git``
+
+        pip install -r requirements.txt
+        python setup.py install
+        pip install -r dev-requirements.txt
+
+
 <br>
 
 - - -
@@ -104,3 +117,9 @@
 * Store a PDF file in my MongoDB database with PYmongo error
 
     1. https://stackoverflow.com/questions/58165966/store-a-pdf-file-in-my-mongodb-database-with-pymongo-error
+
+* biopython - entrez
+
+    1. https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ESearch
+    
+    2. https://marcobonzanini.com/2015/01/12/searching-pubmed-with-python/

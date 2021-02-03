@@ -15,6 +15,7 @@ services:
     volumes:
       - ./py:/home/jovyan/work/py
       - ./spark_data:/home/jovyan/work/data
+      
   mongo:
     image: mongo
     restart: always
