@@ -34,7 +34,7 @@
 
 2. **openssh-server**
 
-    ``apt-get install openssh-server ufw``
+    ``apt-get install openssh-server``
 
     ``echo "PermitRootLogin yes" >> /etc/ssh/sshd_config``
 
