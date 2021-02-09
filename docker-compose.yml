@@ -1,12 +1,13 @@
 version: '3'
 services:  
-  spark:
+  main_container:
     # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#docker-options
     image: jupyter/all-spark-notebook
     restart: always
     ports:
       - "18888:8888"
       - "18787:8787"
+      - "8882:8882"
       - "4040:4040"
       - "2222:22"
     user: root
@@ -14,8 +15,7 @@ services:
       - JUPYTER_ENABLE_LAB=yes
     volumes:
       - ./py:/home/jovyan/work/py
-      - ./spark_data:/home/jovyan/work/data
-      
+      - ./main_data:/home/jovyan/work/main_data
   mongo:
     image: mongo
     restart: always

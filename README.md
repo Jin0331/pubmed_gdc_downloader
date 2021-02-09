@@ -68,7 +68,7 @@
 
         pip3 install biopython
 
-    C. **Pubmed-Bach-Download**
+    D. **Pubmed-Bach-Download**
 
         pip3 install requests requests3 beautifulsoup4 lxml
 
@@ -84,8 +84,13 @@
         -errors ERRORS        Output file path for pmids which failed to fetch. Default: unfetched_pmids.tsv
         -maxRetries MAXRETRIES
                                 Change max number of retries per article on an error 104. Default: 3
+    E. **airflow**
 
-4. **Python** - ***conda env gdc_client***
+        conda update -y conda
+
+        conda install -y airflow
+
+5. **Python** - ***conda env gdc_client***
 
     ``conda create -n gdc_client python=3.7``
 
@@ -129,3 +134,7 @@
     1. https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ESearch
     
     2. https://marcobonzanini.com/2015/01/12/searching-pubmed-with-python/
+
+* airflow
+
+    1. https://blog.naver.com/wideeyed/221565240108
