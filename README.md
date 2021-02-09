@@ -4,7 +4,7 @@
 
 * **docker-compose 활용**
 
-    1. `docker-compose up -d SERVERIP=210.115.229.80 PASSWORD=sempre813! POSTGRES_PASSWORD=sempre813!`
+    1. `SERVERIP=[server-ip] PASSWORD=[password] docker-compose up -d`
 
     2. `Zookeeper 3.4.9, Kafka cp-kafka:5.3.0, 3 server`
 
