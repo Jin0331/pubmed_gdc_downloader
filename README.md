@@ -4,7 +4,7 @@
 
 * **docker-compose 활용**
 
-    1. `SERVERIP=your-ip docker-compose up -d`
+    1. `docker-compose up -d SERVERIP=210.115.229.80 PASSWORD=sempre813! POSTGRES_PASSWORD=sempre813!`
 
     2. `Zookeeper 3.4.9, Kafka cp-kafka:5.3.0, 3 server`
 
@@ -134,6 +134,10 @@
     1. https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ESearch
     
     2. https://marcobonzanini.com/2015/01/12/searching-pubmed-with-python/
+
+* postgre
+
+    1. https://github.com/khezen/compose-postgres
 
 * airflow
 
