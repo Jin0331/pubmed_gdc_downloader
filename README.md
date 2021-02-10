@@ -26,6 +26,8 @@
 
     apt-get update && apt-get upgrade -y
 
+    conda update -y conda
+
 1. **passwd**
 
     `passwd`
@@ -85,8 +87,6 @@
         -maxRetries MAXRETRIES
                                 Change max number of retries per article on an error 104. Default: 3
     E. **airflow**
-
-        conda update -y conda
 
         conda install -y airflow
 
