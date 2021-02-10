@@ -36,7 +36,7 @@
 
 2. **openssh-server**
 
-    ``apt-get install openssh-server -y``
+    ``apt-get install openssh-server iputils-ping -y``
 
     ``echo "PermitRootLogin yes" >> /etc/ssh/sshd_config``
 
@@ -88,7 +88,14 @@
                                 Change max number of retries per article on an error 104. Default: 3
     E. **airflow**
 
-        conda install -y airflow
+        1. conda install -y airflow
+
+        2. airflow initdb
+
+        3. 
+            echo 'export AIRFLOW_HOME=~/airflow' >> /root/.profile
+            echo 'export AIRFLOW_HOME=~/airflow' >> /root/.bashrc
+            source /root/.profile
 
 5. **Python** - ***conda env gdc_client***
 

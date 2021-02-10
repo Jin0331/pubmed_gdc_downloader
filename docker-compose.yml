@@ -12,6 +12,7 @@ services:
       - "4040:4040"
       - "2222:22"
     user: root
+    working_dir: /root
     environment:
       - JUPYTER_ENABLE_LAB=yes
     volumes:
